@@ -45,7 +45,7 @@ function addGuessRows(quantityOfGuess) {
 }
 
 function createElementFromHTML(htmlString) {
-    var div = document.createElement('div');
+    let div = document.createElement('div');
     div.innerHTML = htmlString.trim();
     return div.firstChild;
 }
