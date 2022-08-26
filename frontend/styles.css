@@ -8,18 +8,26 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
+html {
+  height: 100%;
+}
+
 body {
   /* font-family: 'Staatliches', cursive; */
   font-family: 'Staatliches', cursive, Arial, Helvetica, sans-serif;
   color: #3c3c3c;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  height:100%;
 }
 nav {
   display: flex;
   justify-content: center;
   background-color: #AC02F2;
   padding: 20px 0;
+  border-bottom: 5px solid #F2AC02;
 }
 
 nav p {
@@ -32,29 +40,43 @@ nav p {
 .main {
   display: flex;
   justify-content: center;
+  background-color: #f8f8f8;
+  /* align-items: center; */
+  flex-grow: 1;
+  
 }
 
 .center {
-  margin-top: 30px;
-  padding-top: 20px;
-  
+  margin-top: 80px;
+  /* padding-top: 20px; */
+  /* background-color:white; */
   min-width: 400px;
-  height: 700px;
+  /* height: 700px; */
+}
+
+.lower {
+  height: 100px;
+  background-color:#02F2AC;
+  border-top: 5px solid #F2AC02;
 }
 
 .row-guess-styling {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 20px;
+
 }
 
 .letter-box {
-  font-size: x-large;
+  font-size: xx-large;
   text-align: center;
   height: 58px;
   line-height: 58px;
   width: 58px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 5px;
+  background-color: white;
+  color: #3C3C3C;
 }
 
 
