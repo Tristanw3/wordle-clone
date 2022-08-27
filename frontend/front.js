@@ -2,7 +2,7 @@
 // state 
 let rowGuess = [];
 let currentRowGuess = 0;
-let maxRowGuess = 5;
+let maxRowGuess = 6;
 
 // fixed
 const letterKeys = [
@@ -15,12 +15,12 @@ function main() {
     addGuessRows(maxRowGuess);
 }
 
-function listeners(){
+function listeners() {
     window.addEventListener("keydown", keyPressHandler);
 }
 
 function createGuessRow(guessNumber) {
-    
+
     const letterElements = `
         <div class="row-guess-styling row-guess-${guessNumber}">
             <div class="letter-box"></div>
@@ -36,10 +36,10 @@ function createGuessRow(guessNumber) {
 
 function addGuessRows(quantityOfGuess) {
     let centerEle = document.getElementsByClassName('center')[0]
-    
+
     for (let ind = 0; ind < quantityOfGuess; ind++) {
         let newRow = createGuessRow(ind);
-        centerEle.append(newRow)    
+        centerEle.append(newRow)
         rowGuess.push([])
     }
 }
@@ -51,20 +51,20 @@ function createElementFromHTML(htmlString) {
 }
 
 
-function keyPressHandler(event){
+function keyPressHandler(event) {
     // prevent adding more rows then game
-    if(currentRowGuess >= maxRowGuess) {return}
+    if (currentRowGuess >= maxRowGuess) { return }
 
-    if(letterKeys.indexOf(event.key) !== -1 && rowGuess[currentRowGuess].length <= 5) {
+    if (letterKeys.indexOf(event.key) !== -1 && rowGuess[currentRowGuess].length <= 5) {
         rowGuess[currentRowGuess].push(event.key.toUpperCase())
         updateScreen(currentRowGuess);
-    } else if(event.key === 'Backspace') {
+    } else if (event.key === 'Backspace') {
         rowGuess[currentRowGuess].pop()
         updateScreen(currentRowGuess)
     } else if (event.key === 'Enter') {
-        if(rowGuess[currentRowGuess].length >= 5) {
+        if (rowGuess[currentRowGuess].length >= 5) {
             let wordGuess = rowGuess[currentRowGuess].join('').toLowerCase();
-            if(wordList.indexOf(wordGuess) !== -1) {
+            if (wordList.indexOf(wordGuess) !== -1) {
                 console.log("finish")
                 currentRowGuess += 1;
             }
@@ -73,11 +73,11 @@ function keyPressHandler(event){
     }
 }
 
-function updateScreen(guess){
+function updateScreen(guess) {
     let row = document.querySelectorAll(".row-guess-" + guess + " .letter-box");
 
-    row.forEach(function(ele, ind){
-        if(typeof rowGuess[currentRowGuess][ind] !== 'undefined') {
+    row.forEach(function (ele, ind) {
+        if (typeof rowGuess[currentRowGuess][ind] !== 'undefined') {
             ele.innerText = rowGuess[currentRowGuess][ind]
         } else {
             ele.innerText = ""
