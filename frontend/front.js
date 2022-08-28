@@ -3,6 +3,7 @@
 let rowGuess = [];
 let currentRowGuess = 0;
 let maxRowGuess = 6;
+let answer = 'trend';
 
 // fixed
 const letterKeys = [
@@ -66,6 +67,7 @@ function keyPressHandler(event) {
             let wordGuess = rowGuess[currentRowGuess].join('').toLowerCase();
             if (wordList.indexOf(wordGuess) !== -1) {
                 console.log("finish")
+                checkGuess(answer, rowGuess[currentRowGuess])
                 currentRowGuess += 1;
             }
 
@@ -79,10 +81,38 @@ function updateScreen(guess) {
     row.forEach(function (ele, ind) {
         if (typeof rowGuess[currentRowGuess][ind] !== 'undefined') {
             ele.innerText = rowGuess[currentRowGuess][ind]
+            // ele.classList.add("green-letter-guess");
+            if (rowGuess[currentRowGuess].length > 4) {
+                let m = checkGuess(answer, rowGuess[currentRowGuess])
+                if (m[ind] !== '') {
+                    ele.classList.add(m[ind])
+                }
+            }
         } else {
             ele.innerText = ""
         }
     })
+    console.log('the guess',)
+}
+
+function checkGuess(answer, guessArray) {
+    const checkGuess = [];
+    answerArray = answer.toUpperCase().split('');
+    guessArray.map((element, index, array) => {
+
+        if (element === answerArray[index]) {
+            console.log('green')
+            checkGuess.push('green-letter-guess')
+
+        } else if (answerArray.indexOf(element) !== -1) {
+            console.log('yellow')
+            checkGuess.push('yellow-letter-guess')
+        } else {
+            console.log('no change')
+            checkGuess.push('')
+        }
+    })
+    return checkGuess
 }
 
 

@@ -79,4 +79,12 @@ nav p {
   color: #3C3C3C;
 }
 
+.letter-box.green-letter-guess {
+  color: green;
+}
+
+.letter-box.yellow-letter-guess {
+  color: yellow;
+}
+
 
